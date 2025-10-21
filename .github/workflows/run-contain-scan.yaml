@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  VERSION: 5  
+  VERSION: 5
   
 jobs:
   run_container_image_scan_on_supermario_docker_image:
@@ -21,12 +21,12 @@ jobs:
 
       - name: Get Docker Image from Docker Hub
         run: |
-          docker pull docker.io/philemon22/training-repo:mario-game-${{ env.VERSION }}
-          docker save -o supermariolatestdockerimage.tar docker.io/philemon22/training-repo:mario-game-${{ env.VERSION }}
+          docker pull docker.io/philemon22/training-repo:mario-game-5
+          docker save -o supermariolatestdockerimage.tar docker.io/philemon22/training-repo:mario-game-5
 
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
         with:
-          input: /github/workspace/supermariolatestdockerimage.tar
+          input: 'supermariolatestdockerimage.tar'
           exit-code: '1'
           severity: 'CRITICAL,HIGH'
