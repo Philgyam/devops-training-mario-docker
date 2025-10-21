@@ -22,8 +22,8 @@ jobs:
         
       - name: Get Docker Image from Docker Hub
         run: |
-          docker build -t docker.io/philemon22/training-repo
-          docker push docker.io/philemon22/training-repo
+          docker build -t docker.io/philemon22/training-repo:mario-game-1.0.0
+          docker push docker.io/philemon22/training-repo:mario-game-1.0.0
      
       - name: Run Trivy vulnerability scanner in tarball mode
         uses: aquasecurity/trivy-action@master
